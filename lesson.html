@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>即兴小玩家 · 课程体系魔法宣传册</title>
+    <!-- Tailwind CSS 用于极速现代化排版 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons 萌系手绘感图标支持 -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Kosugi+Maru&display=swap');
+        
+        /* 注入超萌的卡通手画字体 */
+        .font-kids {
+            font-family: 'ZCOOL KuaiLe', 'Kosugi Maru', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #FDFBF7; /* 温暖柔和的黄油曲奇白 */
+            overflow: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* 微信满屏 H5 滚动容器 */
+        .slide-container {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: 100vh;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .slide-page {
+            scroll-snap-align: start;
+            height: 100vh;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Q弹浮动动画 */
+        @keyframes bouncyFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(2deg); }
+        }
+        .animate-bounce-slow {
+            animation: bouncyFloat 4s ease-in-out infinite;
+        }
+        
+        @keyframes cloudFloat {
+            0%, 100% { transform: translateX(0px); }
+            50% { transform: translateX(12px); }
+        }
+        .animate-cloud {
+            animation: cloudFloat 6s ease-in-out infinite;
+        }
+
+        /* Q弹点击反馈 */
+        .btn-pop:active {
+            transform: scale(0.92);
+        }
+
+        /* 隐藏滚动条 */
+        .slide-container::-webkit-scrollbar {
+            display: none;
+        }
+        .slide-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* 立体卡通边框阴影 (Neo-brutalism 萌化版) */
+        .cartoon-box {
+            border: 3px solid #2D3748;
+            box-shadow: 4px 4px 0px #2D3748;
+        }
+        .cartoon-box-sm {
+            border: 2px solid #2D3748;
+            box-shadow: 2px 2px 0px #2D3748;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-slate-800">
+
+    <!-- 全局音乐按钮 / 微信环境友好 -->
+    <div id="music-btn" class="fixed top-4 right-4 z-50 cartoon-box-sm bg-amber-300 w-10 h-10 rounded-full flex items-center justify-center cursor-pointer btn-pop animate-spin-slow">
+        <i data-lucide="music" class="w-5 h-5 text-slate-800"></i>
+    </div>
+
+    <!-- 顶端进度条 -->
+    <div class="fixed top-0 left-0 w-full h-1.5 bg-amber-100 z-50">
+        <div id="scroll-progress" class="h-full bg-emerald-400 transition-all duration-300" style="width: 14.2%;"></div>
+    </div>
+
+    <!-- 微信滑动主容器 -->
+    <div class="slide-container" id="main-scroller">
+
+        <!-- ================= PAGE 1: 魔法封面 ================= -->
+        <section class="slide-page flex flex-col justify-between p-6 bg-[#E3F2FD]">
+            <!-- 顶部装饰手绘云朵 -->
+            <div class="flex justify-between items-start mt-6 animate-cloud">
+                <svg class="w-16 h-10 text-white fill-current opacity-80" viewBox="0 0 100 60">
+                    <path d="M20,40 Q10,40 10,30 Q10,15 25,15 Q30,5 45,5 Q60,5 65,15 Q80,15 80,30 Q80,40 70,40 Z"/>
+                </svg>
+                <div class="cartoon-box-sm bg-yellow-100 rounded-full px-3 py-1 text-xs font-bold text-slate-700 flex items-center gap-1">
+                    <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> 向上滑动探险
+                </div>
+                <svg class="w-20 h-12 text-white fill-current opacity-90" viewBox="0 0 100 60">
+                    <path d="M20,40 Q10,40 10,30 Q10,15 25,15 Q30,5 45,5 Q60,5 65,15 Q80,15 80,30 Q80,40 70,40 Z"/>
+                </svg>
+            </div>
+
+            <!-- 主视觉区 -->
+            <div class="text-center my-auto flex flex-col items-center">
+                <!-- 眨眼睛的可爱太阳公公 -->
+                <div class="w-32 h-32 relative mb-6 animate-bounce-slow">
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <!-- 太阳光芒 -->
+                        <g class="text-amber-400 fill-current">
+                            <path d="M50,5 L55,20 L45,20 Z" />
+                            <path d="M50,95 L55,80 L45,80 Z" />
+                            <path d="M5,50 L20,55 L20,45 Z" />
+                            <path d="M95,50 L80,55 L80,45 Z" />
+                            <path d="M18,18 L30,28 L24,32 Z" />
+                            <path d="M82,82 L70,72 L76,68 Z" />
+                            <path d="M18,82 L30,72 L24,68 Z" />
+                            <path d="M82,18 L70,28 L76,32 Z" />
+                        </g>
+                        <!-- 太阳脸盘 -->
+                        <circle cx="50" cy="50" r="30" class="text-amber-300 fill-current stroke-slate-800" stroke-width="3" />
+                        <!-- 萌萌大眼睛 -->
+                        <circle cx="42" cy="46" r="3" fill="#2D3748" />
+                        <!-- 眨眼睛 -->
+                        <path d="M54,46 Q58,42 58,46" stroke="#2D3748" stroke-width="3" fill="none" stroke-linecap="round" />
+                        <!-- 红脸蛋 -->
+                        <circle cx="37" cy="52" r="3" fill="#FB7185" />
+                        <circle cx="63" cy="52" r="3" fill="#FB7185" />
+                        <!-- 吐舌头大笑 -->
+                        <path d="M46,54 Q50,60 54,54" stroke="#2D3748" stroke-width="3" fill="#FB7185" stroke-linecap="round" />
+                    </svg>
+                </div>
+
+                <!-- 亮眼大标题 -->
+                <div class="cartoon-box bg-white p-4 rounded-3xl mb-4 max-w-sm">
+                    <h1 class="text-3xl font-kids text-emerald-600 tracking-wider">即兴小玩家</h1>
+                    <div class="h-1 w-20 bg-amber-400 mx-auto my-2 rounded-full"></div>
+                    <p class="text-lg font-bold text-slate-700 tracking-widest">魔法课程体系单页</p>
+                </div>
+
+                <!-- 核心副标题 -->
+                <p class="text-md font-medium text-emerald-800 bg-emerald-100 px-4 py-1.5 rounded-full mb-6">
+                    ✨ 玩中学，感官先行
+                </p>
+
+                <!-- SLOGAN金句 -->
+                <div class="bg-amber-100 rounded-2xl p-4 cartoon-box-sm max-w-xs relative">
+                    <div class="absolute -top-3 left-4 bg-amber-400 text-xs px-2 py-0.5 rounded-full font-bold text-slate-800">
+                        核心宗旨
+                    </div>
+                    <p class="text-sm font-bold text-slate-700 leading-relaxed">
+                        “教育不是灌输，而是点燃火焰。”
+                    </p>
+                </div>
+            </div>
+
+            <!-- 底部滑动引导 -->
+            <div class="flex flex-col items-center pb-8 animate-bounce">
+                <p class="text-xs font-bold text-emerald-700">向上滑动探索成长魔法</p>
+                <i data-lucide="chevron-up" class="w-6 h-6 text-emerald-700"></i>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 2: 核心理念与成长地图 ================= -->
+        <section class="slide-page flex flex-col justify-between p-6 bg-[#E8F5E9]">
+            <div class="mt-6 text-center">
+                <span class="text-xs bg-emerald-200 text-emerald-800 px-3 py-1 rounded-full font-bold">💡 我们的初心</span>
+                <h2 class="text-2xl font-kids text-emerald-700 mt-2">真正的幼儿启蒙</h2>
+                <p class="text-xs text-slate-600 mt-2 px-4 leading-relaxed bg-white/70 p-3 rounded-2xl cartoon-box-sm">
+                    不是刻板画画、标准答案和规规矩矩静坐，而是走进自然、触摸万物、解放天性——<strong>先感受，再内化。</strong>
+                </p>
+            </div>
+
+            <!-- 可触摸阶梯式路线图 (探险跳格子) -->
+            <div class="my-auto space-y-4 px-2">
+                <h3 class="text-sm font-bold text-slate-600 flex items-center gap-1 justify-center">
+                    <i data-lucide="map" class="w-4 h-4 text-emerald-500"></i>
+                    三级火箭递进式成长地图 (点击解密)
+                </h3>
+
+                <!-- 阶梯 1 -->
+                <div onclick="toggleStep(1)" class="cartoon-box bg-[#FFEEEA] p-3 rounded-2xl cursor-pointer btn-pop transition-all" id="step-1">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="w-8 h-8 rounded-full bg-coral-400 cartoon-box-sm bg-rose-400 text-white flex items-center justify-center font-bold font-kids">1</span>
+                            <div>
+                                <h4 class="font-bold text-rose-700 text-sm">美育感官启蒙 <span class="text-xs font-normal text-rose-600">(2.5-5岁)</span></h4>
+                                <p class="text-xs font-bold text-slate-700 mt-0.5">教孩子「不怕」</p>
+                            </div>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-4 h-4 text-rose-500 transition-transform" id="arrow-1"></i>
+                    </div>
+                    <div class="hidden mt-2 text-xs text-slate-600 pl-10 border-t border-rose-200/50 pt-2 leading-relaxed" id="desc-1">
+                        不怕脏、不怕碰、不怕尝试，拾叶采花玩色彩，建立对大世界的第一眼好感与安全信任。
+                    </div>
+                </div>
+
+                <!-- 阶梯 2 -->
+                <div onclick="toggleStep(2)" class="cartoon-box bg-[#E0F7FA] p-3 rounded-2xl cursor-pointer btn-pop transition-all" id="step-2">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="w-8 h-8 rounded-full cartoon-box-sm bg-sky-400 text-white flex items-center justify-center font-bold font-kids">2</span>
+                            <div>
+                                <h4 class="font-bold text-sky-700 text-sm">蒙氏数学启蒙 <span class="text-xs font-normal text-sky-600">(3-6岁)</span></h4>
+                                <p class="text-xs font-bold text-slate-700 mt-0.5">教孩子「懂逻辑」</p>
+                            </div>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-4 h-4 text-sky-500 transition-transform" id="arrow-2"></i>
+                    </div>
+                    <div class="hidden mt-2 text-xs text-slate-600 pl-10 border-t border-sky-200/50 pt-2 leading-relaxed" id="desc-2">
+                        用手触摸数理关系。专业的蒙氏教具把抽象的数字转化为手中实物，让数学看得见。
+                    </div>
+                </div>
+
+                <!-- 阶梯 3 -->
+                <div onclick="toggleStep(3)" class="cartoon-box bg-[#FFF8E1] p-3 rounded-2xl cursor-pointer btn-pop transition-all" id="step-3">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="w-8 h-8 rounded-full cartoon-box-sm bg-amber-400 text-white flex items-center justify-center font-bold font-kids">3</span>
+                            <div>
+                                <h4 class="font-bold text-amber-700 text-sm">学科PBL探索 <span class="text-xs font-normal text-amber-600">(5-10岁)</span></h4>
+                                <p class="text-xs font-bold text-slate-700 mt-0.5">教孩子「会提问」</p>
+                            </div>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-4 h-4 text-amber-500 transition-transform" id="arrow-3"></i>
+                    </div>
+                    <div class="hidden mt-2 text-xs text-slate-600 pl-10 border-t border-amber-200/50 pt-2 leading-relaxed" id="desc-3">
+                        提问为什么、怎么解决。围绕24节气与商业，让孩子带着真实问题寻找答案。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 底部提示 -->
+            <div class="flex flex-col items-center pb-8 animate-bounce">
+                <p class="text-xs font-bold text-emerald-700">上滑开启第一站：美育感官</p>
+                <i data-lucide="chevron-up" class="w-6 h-6 text-emerald-700"></i>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 3: 第一板块 · 美育感官启蒙 ================= -->
+        <section class="slide-page flex flex-col justify-between p-6 bg-[#FFF1F0]">
+            <div class="mt-6">
+                <div class="flex justify-between items-center">
+                    <span class="text-xs bg-rose-200 text-rose-800 px-3 py-1 rounded-full font-bold">板块一 · 2.5-5岁</span>
+                    <span class="text-xs text-rose-600 font-bold">黄金期3岁左右</span>
+                </div>
+                <h2 class="text-2xl font-kids text-rose-700 mt-2">美育感官启蒙</h2>
+                <div class="flex gap-1.5 mt-2 overflow-x-auto py-1">
+                    <span class="text-[10px] bg-white cartoon-box-sm px-2 py-0.5 rounded-full text-slate-700 font-bold">不受规则束缚</span>
+                    <span class="text-[10px] bg-white cartoon-box-sm px-2 py-0.5 rounded-full text-slate-700 font-bold">不被审美定义</span>
+                    <span class="text-[10px] bg-white cartoon-box-sm px-2 py-0.5 rounded-full text-slate-700 font-bold">丰盈内心</span>
+                </div>
+            </div>
+
+            <!-- 课程特色堆叠滑块 (点击魔法页签) -->
+            <div class="my-auto space-y-4">
+                <!-- 切换标签 -->
+                <div class="grid grid-cols-3 gap-2">
+                    <button onclick="switchSensoryTab(1)" id="sensory-btn-1" class="py-2 px-1 rounded-xl font-kids text-xs cartoon-box bg-rose-400 text-white font-bold transition-all">
+                        🍭 美育脏玩
+                    </button>
+                    <button onclick="switchSensoryTab(2)" id="sensory-btn-2" class="py-2 px-1 rounded-xl font-kids text-xs cartoon-box bg-white text-slate-700 transition-all">
+                        🌱 泥巴厨房
+                    </button>
+                    <button onclick="switchSensoryTab(3)" id="sensory-btn-3" class="py-2 px-1 rounded-xl font-kids text-xs cartoon-box bg-white text-slate-700 transition-all">
+                        🦷 小牙医
+                    </button>
+                </div>
+
+                <!-- 标签卡片内容 -->
+                <div id="sensory-card-1" class="cartoon-box bg-white p-4 rounded-2xl relative">
+                    <div class="absolute -right-2 -top-2 bg-yellow-400 text-slate-800 text-[10px] font-bold px-2 py-0.5 rounded-full rotate-12">
+                        长达3.5小时!
+                    </div>
+                    <p class="text-xs font-bold text-rose-600 mb-1">“脏着回家，笑着长大。”</p>
+                    <h4 class="font-kids text-base text-slate-800 mb-2">大自然户外 Messy Play</h4>
+                    <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+                        <li><strong>色彩破冰：</strong>彩带律动，零压力融入</li>
+                        <li><strong>感官寻宝：</strong>拾花捡叶，原生艺术</li>
+                        <li><strong>四大核心材质：</strong>流动画伞、巨幅薄膜、光影镜膜作画</li>
+                    </ul>
+                </div>
+
+                <div id="sensory-card-2" class="cartoon-box bg-white p-4 rounded-2xl hidden relative">
+                    <p class="text-xs font-bold text-emerald-600 mb-1">“最贵的早教在泥土和花草里”</p>
+                    <h4 class="font-kids text-base text-slate-800 mb-2">泥巴厨房全自然美育</h4>
+                    <ul class="text-xs text-slate-600 space-y-1.5">
+                        <li class="flex items-center gap-1">🌾 <strong>采集：</strong>辨颜色、摸质地、闻气味</li>
+                        <li class="flex items-center gap-1">👐 <strong>和泥：</strong>感知干湿冷暖，深度触觉刺激</li>
+                        <li class="flex items-center gap-1">🥯 <strong>摆摊：</strong>小厨神上阵自由创作展示</li>
+                    </ul>
+                </div>
+
+                <div id="sensory-card-3" class="cartoon-box bg-white p-4 rounded-2xl hidden relative">
+                    <p class="text-xs font-bold text-amber-600 mb-1">“从‘怕刷牙’到‘我要刷牙’”</p>
+                    <h4 class="font-kids text-base text-slate-800 mb-2">小小牙医绘本实景体验</h4>
+                    <ul class="text-xs text-slate-600 space-y-1.5">
+                        <li class="flex items-center gap-1">📖 <strong>绘本共情：</strong>《牙婆婆》打破看牙恐惧</li>
+                        <li class="flex items-center gap-1">🧸 <strong>角色扮演：</strong>变身小牙医，给玩偶检查</li>
+                        <li class="flex items-center gap-1">🏥 <strong>实景探秘：</strong>诊所巡礼，完成非遗蒲扇DIY</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 下滑提示 -->
+            <div class="flex flex-col items-center pb-8 animate-bounce">
+                <p class="text-xs font-bold text-rose-700">上滑探索下一站：蒙氏数学</p>
+                <i data-lucide="chevron-up" class="w-6 h-6 text-rose-700"></i>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 4: 第二板块 · 蒙氏数学 ================= -->
+        <section class="slide-page flex flex-col justify-between p-6 bg-[#E0F7FA]">
+            <div class="mt-6">
+                <div class="flex justify-between items-center">
+                    <span class="text-xs bg-sky-200 text-sky-800 px-3 py-1 rounded-full font-bold">板块二 · 3-6岁</span>
+                    <span class="text-xs text-sky-600 font-bold">体系化启蒙</span>
+                </div>
+                <h2 class="text-2xl font-kids text-sky-700 mt-2">蒙氏数学启蒙</h2>
+                <p class="text-xs text-sky-900 font-bold mt-1">“不数数、不刷题，让数学看得见、摸得着。”</p>
+            </div>
+
+            <!-- 可互动的串珠教具展示体验！ -->
+            <div class="my-auto bg-white cartoon-box p-4 rounded-3xl space-y-4">
+                <div class="text-center">
+                    <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-bold">👆 手指点点看！</span>
+                    <h3 class="text-sm font-bold text-slate-700 mt-1">模拟蒙氏经典十进制串珠</h3>
+                </div>
+
+                <!-- 串珠轴轨道 -->
+                <div class="bg-amber-50 p-4 rounded-2xl cartoon-box-sm flex flex-col gap-4 items-center justify-center relative">
+                    <!-- 第一行：10颗串珠 -->
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-bold text-slate-500 w-4">十位</span>
+                        <div class="flex gap-1 bg-amber-200/40 p-1.5 rounded-full border border-dashed border-slate-400" id="beads-row-1">
+                            <!-- 动态加载珠子 -->
+                        </div>
+                    </div>
+                    <!-- 第二行：个位串珠 -->
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-bold text-slate-500 w-4">个位</span>
+                        <div class="flex gap-1 bg-amber-200/40 p-1.5 rounded-full border border-dashed border-slate-400" id="beads-row-2">
+                            <!-- 动态加载珠子 -->
+                        </div>
+                    </div>
+
+                    <!-- 计算器展示 -->
+                    <div class="w-full bg-slate-800 text-amber-400 p-2 rounded-xl text-center font-mono text-sm cartoon-box-sm">
+                        已点选：<span id="bead-count" class="font-bold text-lg text-white">0</span> 颗 ➔ 具象感官：十进制积木
+                    </div>
+                </div>
+
+                <!-- 渐进探险说明 -->
+                <div class="grid grid-cols-3 gap-2 text-center text-[10px]">
+                    <div class="bg-rose-50 p-2 rounded-lg">
+                        <p class="font-bold text-rose-700">1. 先感受数量</p>
+                        <p class="text-slate-500 scale-90">触摸多重的木质珠子</p>
+                    </div>
+                    <div class="bg-sky-50 p-2 rounded-lg">
+                        <p class="font-bold text-sky-700">2. 再理解符号</p>
+                        <p class="text-slate-500 scale-90">对照数字与量牌</p>
+                    </div>
+                    <div class="bg-amber-50 p-2 rounded-lg">
+                        <p class="font-bold text-amber-700">3. 自由四则运算</p>
+                        <p class="text-slate-500 scale-90">用珠子拼摆数字魔法</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 下滑提示 -->
+            <div class="flex flex-col items-center pb-8 animate-bounce">
+                <p class="text-xs font-bold text-sky-700">上滑探索下一站：学科PBL</p>
+                <i data-lucide="chevron-up" class="w-6 h-6 text-sky-700"></i>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 5: 第三板块 · 学科 PBL ================= -->
+        <section class="slide-page flex flex-col justify-between p-6 bg-[#FFF9E6]">
+            <div class="mt-6">
+                <div class="flex justify-between items-center">
+                    <span class="text-xs bg-amber-200 text-amber-800 px-3 py-1 rounded-full font-bold">板块三 · 5-10岁</span>
+                    <span class="text-xs text-amber-600 font-bold">小班制 6-8人</span>
+                </div>
+                <h2 class="text-2xl font-kids text-amber-700 mt-2">学科 PBL 探索</h2>
+                <div class="flex gap-2 mt-1">
+                    <span class="text-[10px] bg-amber-100 text-slate-800 px-2 py-0.5 rounded-full font-bold">不教标准答案，教如何提问</span>
+                </div>
+            </div>
+
+            <!-- 可切换大主题 -->
+            <div class="my-auto space-y-4">
+                <div class="flex bg-slate-100 p-1.5 rounded-xl cartoon-box-sm">
+                    <button onclick="switchPblTab(1)" id="pbl-btn-1" class="flex-1 py-1.5 text-xs font-bold rounded-lg bg-amber-400 text-slate-800 transition-all">
+                        🌱 24节气PBL
+                    </button>
+                    <button onclick="switchPblTab(2)" id="pbl-btn-2" class="flex-1 py-1.5 text-xs font-bold rounded-lg text-slate-600 transition-all">
+                        ☕ 儿童商业
+                    </button>
+                    <button onclick="switchPblTab(3)" id="pbl-btn-3" class="flex-1 py-1.5 text-xs font-bold rounded-lg text-slate-600 transition-all">
+                        ⚙️ 工程科学
+                    </button>
+                </div>
+
+                <!-- PBL 细节卡片 -->
+                <div id="pbl-card-1" class="bg-white p-4 rounded-2xl cartoon-box space-y-2 h-64 overflow-y-auto">
+                    <h4 class="font-kids text-base text-amber-700">跟着24节气 读懂时间智慧</h4>
+                    <div class="space-y-2 text-xs">
+                        <div class="p-2 bg-emerald-50 rounded-lg">
+                            <span class="font-bold text-emerald-800">🌱 清明【秋千工程师】</span>
+                            <p class="text-slate-600 mt-0.5">人文×搭建：探索力学，亲手用积木搭建秋千。</p>
+                        </div>
+                        <div class="p-2 bg-amber-50 rounded-lg">
+                            <span class="font-bold text-amber-800">🌞 立夏【空心树秘密】</span>
+                            <p class="text-slate-600 mt-0.5">生命科学：做小实验解密植物生命运转机能。</p>
+                        </div>
+                        <div class="p-2 bg-blue-50 rounded-lg">
+                            <span class="font-bold text-blue-800">🌧️ 芒种【给夏天农场送水】</span>
+                            <p class="text-slate-600 mt-0.5">自然合作：用棉花造雨，用积木搭引水渠。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="pbl-card-2" class="bg-white p-4 rounded-2xl cartoon-box hidden h-64 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-kids text-base text-sky-700 mb-2">儿童商业思维PBL</h4>
+                        <p class="text-xs font-bold text-slate-800 bg-sky-50 p-2 rounded-lg mb-2">
+                            ☕ 课题：为什么有的咖啡卖9元，有的卖39元？
+                        </p>
+                        <ul class="text-xs text-slate-600 space-y-1.5">
+                            <li>🎯 <strong>商业闭环探秘：</strong>真实观察 ➔ 实地调研</li>
+                            <li>🗣️ <strong>对话咖啡师：</strong>去街区咖啡厅采访主理人</li>
+                            <li>📊 <strong>底层算账：</strong>探索成本、地段、服务与真实表达</li>
+                        </ul>
+                    </div>
+                    <span class="text-[10px] bg-sky-100 text-sky-800 p-1.5 rounded-lg text-center font-bold">培养小小未来商业分析师</span>
+                </div>
+
+                <div id="pbl-card-3" class="bg-white p-4 rounded-2xl cartoon-box hidden h-64 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-kids text-base text-orange-700 mb-2">工程科学：探索影子的一天</h4>
+                        <p class="text-xs font-bold text-slate-800 bg-orange-50 p-2 rounded-lg mb-2">
+                            🔍 体验 8 步科学探究闭环，建立实证思维
+                        </p>
+                        <div class="grid grid-cols-2 gap-1.5 text-[10px] text-slate-600">
+                            <div class="bg-slate-50 p-1.5 rounded">☀️ 触摸影子测温</div>
+                            <div class="bg-slate-50 p-1.5 rounded">✏️ 户外描绘影子</div>
+                            <div class="bg-slate-50 p-1.5 rounded">📊 记录时间与长度</div>
+                            <div class="bg-slate-50 p-1.5 rounded">🗣️ 对比数据分享</div>
+                        </div>
+                    </div>
+                    <span class="text-[10px] bg-orange-100 text-orange-800 p-1.5 rounded-lg text-center font-bold">“不仅动手，更是学会说出探索结果”</span>
+                </div>
+            </div>
+
+            <!-- 下滑提示 -->
+            <div class="flex flex-col items-center pb-8 animate-bounce">
+                <p class="text-xs font-bold text-amber-700">上滑开启：智能课程推荐 & 总览</p>
+                <i data-lucide="chevron-up" class="w-6 h-6 text-amber-700"></i>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 6: 智能课程推荐指南 ================= -->
+        <section class="slide-page flex flex-col justify-between p-6 bg-[#EDEFF6]">
+            <div class="mt-6 text-center">
+                <span class="text-xs bg-violet-200 text-violet-800 px-3 py-1 rounded-full font-bold">✨ 家长互动魔镜</span>
+                <h2 class="text-2xl font-kids text-violet-700 mt-2">1秒测出适合宝宝的路线</h2>
+            </div>
+
+            <!-- 智选问卷板 -->
+            <div class="my-auto bg-white cartoon-box p-4 rounded-3xl space-y-4">
+                <!-- 年龄段 -->
+                <div>
+                    <p class="text-xs font-bold text-slate-600 mb-2 flex items-center gap-1">
+                        <i data-lucide="smile" class="w-4 h-4 text-violet-500"></i> 1. 宝宝今年几岁啦？
+                    </p>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button onclick="selectMatchAge('toddler')" id="age-toddler" class="age-btn py-1.5 text-xs rounded-xl cartoon-box-sm bg-violet-400 text-white font-bold">
+                            2.5-5岁
+                        </button>
+                        <button onclick="selectMatchAge('preschool')" id="age-preschool" class="age-btn py-1.5 text-xs rounded-xl cartoon-box-sm bg-white text-slate-700">
+                            3-6岁
+                        </button>
+                        <button onclick="selectMatchAge('kids')" id="age-kids" class="age-btn py-1.5 text-xs rounded-xl cartoon-box-sm bg-white text-slate-700">
+                            5-10岁
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 兴趣偏好 -->
+                <div>
+                    <p class="text-xs font-bold text-slate-600 mb-2 flex items-center gap-1">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-violet-500"></i> 2. 最想培养什么特质？
+                    </p>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="selectMatchTrait('art')" id="trait-art" class="trait-btn py-1.5 text-xs rounded-xl cartoon-box-sm bg-yellow-400 text-slate-800 font-bold">
+                            🎨 解放天性与美学
+                        </button>
+                        <button onclick="selectMatchTrait('logic')" id="trait-logic" class="trait-btn py-1.5 text-xs rounded-xl cartoon-box-sm bg-white text-slate-700">
+                            🔢 逻辑和动手能力
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 推荐结果框 -->
+                <div class="bg-violet-50 p-3 rounded-2xl border-2 border-dashed border-violet-300">
+                    <p class="text-[10px] font-bold text-violet-700 uppercase tracking-wider">🌟 为您定制的专属路线：</p>
+                    <h4 id="match-title" class="font-kids text-sm text-slate-800 mt-1">美育感官启蒙 + 脏玩泥巴厨房</h4>
+                    <p id="match-desc" class="text-[10px] text-slate-500 mt-1 leading-normal">
+                        最适合低龄宝宝探索自然，通过触觉和色彩打开世界认知大门，释放情绪！
+                    </p>
+                </div>
+            </div>
+
+            <!-- 下滑提示 -->
+            <div class="flex flex-col items-center pb-8 animate-bounce">
+                <p class="text-xs font-bold text-violet-700">上滑查看完整总览表 & 预约</p>
+                <i data-lucide="chevron-up" class="w-6 h-6 text-violet-700"></i>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 7: 课程快捷总览表 & 体验课预约 ================= -->
+        <section class="slide-page flex flex-col justify-between p-6 bg-[#E8F5E9] overflow-hidden">
+            <div class="mt-6 text-center">
+                <h2 class="text-2xl font-kids text-emerald-700">全景课程总览</h2>
+                <p class="text-xs text-slate-500">滑动屏幕查看全部课程详情</p>
+            </div>
+
+            <!-- 小型滚动表格区 -->
+            <div class="my-auto max-h-[42vh] overflow-y-auto cartoon-box bg-white rounded-2xl p-2">
+                <table class="w-full text-left text-[10px] border-collapse">
+                    <thead>
+                        <tr class="bg-emerald-100 text-emerald-800 font-bold border-b border-slate-300">
+                            <th class="p-2 rounded-l-lg">课程主题</th>
+                            <th class="p-2">适龄</th>
+                            <th class="p-2 rounded-r-lg">核心体验</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-600">
+                        <tr class="hover:bg-amber-50">
+                            <td class="p-2 font-bold text-slate-800">🎨 美育脏玩</td>
+                            <td class="p-2">2.5-5岁</td>
+                            <td class="p-2">多材质手绘与色彩破冰</td>
+                        </tr>
+                        <tr class="hover:bg-amber-50">
+                            <td class="p-2 font-bold text-slate-800">🌱 泥巴厨房</td>
+                            <td class="p-2">2.5-5岁</td>
+                            <td class="p-2">全自然材料感官触觉触碰</td>
+                        </tr>
+                        <tr class="hover:bg-amber-50">
+                            <td class="p-2 font-bold text-slate-800">🦷 小小牙医</td>
+                            <td class="p-2">2.5-5岁</td>
+                            <td class="p-2">角色扮演与真实门诊探秘</td>
+                        </tr>
+                        <tr class="hover:bg-amber-50">
+                            <td class="p-2 font-bold text-slate-800">🔢 蒙氏数学</td>
+                            <td class="p-2">3-6岁</td>
+                            <td class="p-2">数珠、金色积木与四则运算</td>
+                        </tr>
+                        <tr class="hover:bg-amber-50">
+                            <td class="p-2 font-bold text-slate-800">⚙️ 节气 · 秋千</td>
+                            <td class="p-2">5-10岁</td>
+                            <td class="p-2">力学原理与开放搭建思维</td>
+                        </tr>
+                        <tr class="hover:bg-amber-50">
+                            <td class="p-2 font-bold text-slate-800">🌳 节气 · 树</td>
+                            <td class="p-2">5-10岁</td>
+                            <td class="p-2">科学探究空心树的生命</td>
+                        </tr>
+                        <tr class="hover:bg-amber-50">
+                            <td class="p-2 font-bold text-slate-800">☕ 咖啡商业PBL</td>
+                            <td class="p-2">5-10岁</td>
+                            <td class="p-2">走访真实店铺，核算成本</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 底部：一键预约魔法按钮 -->
+            <div class="mb-8 space-y-3">
+                <div class="cartoon-box-sm bg-white rounded-2xl p-3 flex gap-2 items-center">
+                    <input id="parent-phone" type="tel" placeholder="输入您的手机号预约体验" class="flex-1 text-xs bg-slate-50 border-none outline-none p-1.5 rounded-lg focus:ring-1 focus:ring-emerald-400">
+                    <button onclick="submitReservation()" class="cartoon-box-sm bg-emerald-400 hover:bg-emerald-500 text-slate-800 text-xs font-bold px-3 py-1.5 rounded-xl btn-pop transition-all">
+                        获取礼包
+                    </button>
+                </div>
+                <p class="text-[9px] text-center text-slate-400">© 即兴小玩家 · 让教育燃起熊熊烈火</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- 成功预定反馈弹窗 -->
+    <div id="success-modal" class="fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-6 hidden">
+        <div class="cartoon-box bg-white p-6 rounded-3xl max-w-xs text-center space-y-4">
+            <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto text-emerald-600 animate-bounce">
+                <i data-lucide="gift" class="w-8 h-8"></i>
+            </div>
+            <div>
+                <h3 class="font-kids text-lg text-slate-800">🎉 探险邀请函生成成功！</h3>
+                <p class="text-xs text-slate-500 mt-2">专属顾问将在24小时内联系您，为您送上价值298元的线下感官体验包！</p>
+            </div>
+            <button onclick="closeModal()" class="w-full py-2 bg-yellow-400 rounded-xl font-bold text-xs cartoon-box-sm text-slate-800 btn-pop">
+                开始快乐成长之旅
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // 初始化 Lucide 萌系小图标
+        lucide.createIcons();
+
+        // 顶端滚动进度条联动逻辑
+        const scroller = document.getElementById('main-scroller');
+        const progressBar = document.getElementById('scroll-progress');
+        scroller.addEventListener('scroll', () => {
+            const scrollTop = scroller.scrollTop;
+            const scrollHeight = scroller.scrollHeight - scroller.clientHeight;
+            const percentage = (scrollTop / scrollHeight) * 100;
+            // 确保进度条在 [14.2%, 100%] 之间，与7张卡片对应
+            progressBar.style.width = Math.max(14.2, percentage) + '%';
+        });
+
+        // 音乐开关功能
+        const musicBtn = document.getElementById('music-btn');
+        let musicPlaying = false;
+        
+        // 我们利用微信内浏览器友好的 Web Audio API 动态生成一个可爱、温暖的八音盒背景童谣音效，无需下载 mp3 即可播放！
+        let audioCtx;
+        function playCuteTone() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            
+            // 演奏一小段欢快的五声音阶旋律
+            const notes = [261.63, 293.66, 329.63, 392.00, 440.00]; // 哆 唻 咪 唆 啦
+            let time = audioCtx.currentTime;
+            
+            const melody = [0, 2, 3, 1, 4, 3, 2, 0];
+            melody.forEach((noteIndex, idx) => {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine'; // 圆润的纯音
+                osc.frequency.setValueAtTime(notes[noteIndex], time + idx * 0.45);
+                
+                gain.gain.setValueAtTime(0.15, time + idx * 0.45);
+                gain.gain.exponentialRampToValueAtTime(0.001, time + idx * 0.45 + 0.4);
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start(time + idx * 0.45);
+                osc.stop(time + idx * 0.45 + 0.4);
+            });
+        }
+
+        musicBtn.addEventListener('click', () => {
+            musicPlaying = !musicPlaying;
+            if (musicPlaying) {
+                musicBtn.classList.add('animate-spin');
+                playCuteTone();
+                // 循环播放童谣
+                window.musicTimer = setInterval(playCuteTone, 4000);
+            } else {
+                musicBtn.classList.remove('animate-spin');
+                clearInterval(window.musicTimer);
+            }
+        });
+
+        // 第二页：成长路线阶梯控制逻辑
+        function toggleStep(id) {
+            for(let i=1; i<=3; i++) {
+                const desc = document.getElementById(`desc-${i}`);
+                const arrow = document.getElementById(`arrow-${i}`);
+                const stepBox = document.getElementById(`step-${i}`);
+                
+                if (i === id) {
+                    const isHidden = desc.classList.contains('hidden');
+                    if (isHidden) {
+                        desc.classList.remove('hidden');
+                        arrow.style.transform = 'rotate(90deg)';
+                        stepBox.style.transform = 'scale(1.02)';
+                    } else {
+                        desc.classList.add('hidden');
+                        arrow.style.transform = 'rotate(0deg)';
+                        stepBox.style.transform = 'scale(1)';
+                    }
+                } else {
+                    desc.classList.add('hidden');
+                    arrow.style.transform = 'rotate(0deg)';
+                    stepBox.style.transform = 'scale(1)';
+                }
+            }
+        }
+
+        // 第三页：感官启蒙 Tab 切换
+        function switchSensoryTab(id) {
+            for(let i=1; i<=3; i++) {
+                const btn = document.getElementById(`sensory-btn-${i}`);
+                const card = document.getElementById(`sensory-card-${i}`);
+                if (i === id) {
+                    btn.className = "py-2 px-1 rounded-xl font-kids text-xs cartoon-box bg-rose-400 text-white font-bold transition-all";
+                    card.classList.remove('hidden');
+                } else {
+                    btn.className = "py-2 px-1 rounded-xl font-kids text-xs cartoon-box bg-white text-slate-700 transition-all";
+                    card.classList.add('hidden');
+                }
+            }
+        }
+
+        // 第四页：蒙氏数珠体验逻辑
+        const beadsRow1 = document.getElementById('beads-row-1');
+        const beadsRow2 = document.getElementById('beads-row-2');
+        const beadCountText = document.getElementById('bead-count');
+        
+        let selectedBeads = 0;
+        
+        // 渲染十位珠子 (10颗)
+        for (let i = 0; i < 10; i++) {
+            const bead = document.createElement('div');
+            bead.className = "w-5 h-5 rounded-full bg-amber-300 border border-slate-700 cursor-pointer transition-all duration-200 transform hover:scale-125 hover:bg-amber-400 active:scale-95";
+            bead.dataset.value = 10;
+            bead.addEventListener('click', function() {
+                if (bead.classList.contains('bg-amber-500')) {
+                    bead.classList.remove('bg-amber-500', 'translate-y-1');
+                    bead.classList.add('bg-amber-300');
+                    selectedBeads -= 10;
+                } else {
+                    bead.classList.remove('bg-amber-300');
+                    bead.classList.add('bg-amber-500', 'translate-y-1');
+                    selectedBeads += 10;
+                    playClickTone();
+                }
+                updateBeadUI();
+            });
+            beadsRow1.appendChild(bead);
+        }
+
+        // 渲染个位珠子 (10颗)
+        for (let i = 0; i < 10; i++) {
+            const bead = document.createElement('div');
+            bead.className = "w-5 h-5 rounded-full bg-sky-200 border border-slate-700 cursor-pointer transition-all duration-200 transform hover:scale-125 hover:bg-sky-400 active:scale-95";
+            bead.dataset.value = 1;
+            bead.addEventListener('click', function() {
+                if (bead.classList.contains('bg-sky-500')) {
+                    bead.classList.remove('bg-sky-500', 'translate-y-1');
+                    bead.classList.add('bg-sky-200');
+                    selectedBeads -= 1;
+                } else {
+                    bead.classList.remove('bg-sky-200');
+                    bead.classList.add('bg-sky-500', 'translate-y-1');
+                    selectedBeads += 1;
+                    playClickTone();
+                }
+                updateBeadUI();
+            });
+            beadsRow2.appendChild(bead);
+        }
+
+        function updateBeadUI() {
+            beadCountText.innerText = selectedBeads;
+        }
+
+        function playClickTone() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.frequency.setValueAtTime(600 + Math.random() * 200, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.1);
+        }
+
+        // 第五页：学科 PBL Tab 切换
+        function switchPblTab(id) {
+            for(let i=1; i<=3; i++) {
+                const btn = document.getElementById(`pbl-btn-${i}`);
+                const card = document.getElementById(`pbl-card-${i}`);
+                if (i === id) {
+                    btn.className = "flex-1 py-1.5 text-xs font-bold rounded-lg bg-amber-400 text-slate-800 transition-all";
+                    card.classList.remove('hidden');
+                } else {
+                    btn.className = "flex-1 py-1.5 text-xs font-bold rounded-lg text-slate-600 transition-all";
+                    card.classList.add('hidden');
+                }
+            }
+        }
+
+        // 第六页：智能推荐逻辑
+        let userAge = 'toddler';
+        let userTrait = 'art';
+
+        const recommendations = {
+            'toddler-art': {
+                title: '🌸 美育感官启蒙 + 泥巴厨房',
+                desc: '最适合2.5-5岁追求自由释放的宝宝！通过全自然材料触摸与巨幅Messy Play涂鸦释放情绪，建立对世界满分的信任感！'
+            },
+            'toddler-logic': {
+                title: '🔢 蒙氏数量感官趣味启蒙',
+                desc: '针对2.5-5岁宝宝开展，通过可触摸的蒙氏几何与数码牌插板，让孩子对十进制大小有最早的物理触觉理解。'
+            },
+            'preschool-art': {
+                title: '🎨 艺术脏玩 + 小小牙医戏剧探秘',
+                desc: '适合3-6岁宝宝，融入角色扮演，通过戏剧体验克服牙医诊所恐惧，锻炼极高的人际交往与审美表达。'
+            },
+            'preschool-logic': {
+                title: '⚙️ 蒙氏数学阶进 + 清明秋千搭建',
+                desc: '适合3-6岁，从实物数量自然向符号与抽象算式过渡，配合简单的戏剧搭建，工程思维初长成。'
+            },
+            'kids-art': {
+                title: '🌞 24节气PBL自然艺术探索营',
+                desc: '适合5-10岁大宝宝。深入户外采集、观察影子、实验植物生命机制，把自然规律用彩色绘图画出来！'
+            },
+            'kids-logic': {
+                title: '☕ 儿童咖啡店商业PBL + 影子工程营',
+                desc: '专为5-10岁设计！包含咖啡馆真实走访核算成本，以及8步科学观察影子法。在自主探寻中揭开客观世界运行规律。'
+            }
+        };
+
+        function selectMatchAge(age) {
+            document.querySelectorAll('.age-btn').forEach(btn => {
+                btn.className = "age-btn py-1.5 text-xs rounded-xl cartoon-box-sm bg-white text-slate-700";
+            });
+            document.getElementById(`age-${age}`).className = "age-btn py-1.5 text-xs rounded-xl cartoon-box-sm bg-violet-400 text-white font-bold";
+            userAge = age;
+            updateRecommendation();
+        }
+
+        function selectMatchTrait(trait) {
+            document.querySelectorAll('.trait-btn').forEach(btn => {
+                btn.className = "trait-btn py-1.5 text-xs rounded-xl cartoon-box-sm bg-white text-slate-700";
+            });
+            document.getElementById(`trait-${trait}`).className = "trait-btn py-1.5 text-xs rounded-xl cartoon-box-sm bg-yellow-400 text-slate-800 font-bold";
+            userTrait = trait;
+            updateRecommendation();
+        }
+
+        function updateRecommendation() {
+            const key = `${userAge}-${userTrait}`;
+            const result = recommendations[key];
+            document.getElementById('match-title').innerText = result.title;
+            document.getElementById('match-desc').innerText = result.desc;
+        }
+
+        // 第七页：提交预约逻辑
+        function submitReservation() {
+            const phone = document.getElementById('parent-phone').value;
+            if (!phone || phone.length < 11) {
+                alert('请填写正确的联系方式，方便为您送出魔法福利哦！');
+                return;
+            }
+            document.getElementById('success-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('success-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
